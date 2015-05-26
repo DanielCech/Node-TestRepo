@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 /* GET home page. */
 router.get('/hello', function(req, res, next) {
   var data = {
-    message: 'Hello world!'
+    message: 'Hello world! Hello world!'
   };
   res.send(data);
 });
