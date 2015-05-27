@@ -14,8 +14,20 @@ router.get('/hello', function(req, res, next) {
   res.send(data);
 });
 
-router.get('/user/:id', function(req, res, next){
-  res.send('user ' + req.params.id);
+router.get('/user/:id', function(req, res, next) {
+  req.checkBody('name', 'Name cannot be empty').notEmpty();
+  
+  var errors = req.validationErrors()
+  if (errors) {
+    var data = {
+	     error: "Invalid Reqest",
+	     message: errors  //popis chyby
+	   };
+     res.send(data);
+  }
+  else {
+    res.send('user ' + req.params.id);  
+  }
 });
 
 module.exports = router;
