@@ -20,9 +20,9 @@ router.get('/user/:id', function(req, res, next) {
 
 router.post('/profile', function (req, res) {
   req.checkBody('name', 'Name cannot be empty').notEmpty();
-  req.checkBody('email', 'Name cannot be empty').notEmail();
+  req.checkBody('email', 'Email is not valid').notEmail();
 
-  var errors = req.validationErrors()
+  var errors = req.validationErrors();
   if (errors) {
     var data = {
 	     error: "Invalid Reqest",
