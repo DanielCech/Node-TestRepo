@@ -30,4 +30,9 @@ router.get('/user/:id', function(req, res, next) {
   }
 });
 
+router.post('/profile', function (req, res) {
+  req.checkBody('name', 'Name cannot be empty').notEmpty();
+  res.send('POST request to the homepage');
+});
+
 module.exports = router;
